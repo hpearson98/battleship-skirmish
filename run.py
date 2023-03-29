@@ -12,6 +12,7 @@ class Board:
         If that space already has a ship then it will choose another space
         """
         for ship in self.num_ships:
+            # The Code Institute Tutor Support team is credited to the code in this for loop
             rand_index = [random.randint(0, 4),random.randint(0, 4)]
             while self.size[rand_index[0]][rand_index[1]] == ship:
                 rand_index = [random.randint(0, 4), random.randint(0, 4)]
@@ -42,5 +43,5 @@ def greeting():
 greeting()
 player = Board(5, 4, "player")
 computer = Board(5, 4, "computer")
-print(player.assign_ships())
-print(computer.assign_ships())
+player_board = player.assign_ships()
+computer_board = computer.assign_ships()
