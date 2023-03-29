@@ -14,7 +14,7 @@ class Board:
         for ship in self.num_ships:
             rand_index = [random.randint(0, 4),random.randint(0, 4)]
             while self.size[rand_index[0]][rand_index[1]] == ship:
-                rand_index = [[random.randint(0, 4)],[random.randint(0, 4)]]
+                rand_index = [random.randint(0, 4), random.randint(0, 4)]
             
             self.size[rand_index[0]][rand_index[1]] = ship
             
@@ -39,8 +39,8 @@ def greeting():
 
     player_ready()
 
-#greeting()
-player_board = Board(5, 4, "player")
-computer_board = Board(5, 4, "computer")
-print(player_board.assign_ships())
-print(computer_board.assign_ships())
+greeting()
+player = Board(5, 4, "player")
+computer = Board(5, 4, "computer")
+print(player.assign_ships())
+print(computer.assign_ships())
