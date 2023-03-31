@@ -5,7 +5,8 @@ class Board:
         self.size = [["*" for x in range(size)] for y in range(size)]
         self.num_ships = ["@" for x in range(num_ships)]
         self.type = type
-    
+        self.guesses = []
+
     def assign_ships(self):
         """
         Gets a random space on the board and place a ship in that space.
@@ -24,7 +25,7 @@ class Board:
 def greeting():
     """
     Greets player when the game is initially run.
-    Asks the player for their name.
+    Asks the player for their name
     """
     user_name = input("Welcome to Battleship Skirmish!\nWhat is your Name? ")
 
@@ -40,8 +41,18 @@ def greeting():
 
     player_ready()
 
-greeting()
+def player_turn():
+    player_row_choice = int(input("Choose a row to attack! "))
+    player_col_choice = int(input("Choose a column to attack! "))
+    player_choice = (player_row_choice, player_col_choice)
+    
+#greeting()
 player = Board(5, 4, "player")
 computer = Board(5, 4, "computer")
 player_board = player.assign_ships()
 computer_board = computer.assign_ships()
+print(computer_board)
+print(player_board)
+turn = 3
+while turn > 0:
+    player_turn()
