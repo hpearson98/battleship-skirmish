@@ -45,7 +45,14 @@ def player_turn():
     player_row_choice = int(input("Choose a row to attack! "))
     player_col_choice = int(input("Choose a column to attack! "))
     player_choice = (player_row_choice, player_col_choice)
-    
+    if player_choice in player.guesses:
+        print("You have already attacked this space.")
+        print("Please choose another space.")
+        player_turn()
+    player.guesses.append(player_choice)
+   
+
+
 #greeting()
 player = Board(5, 4, "player")
 computer = Board(5, 4, "computer")
