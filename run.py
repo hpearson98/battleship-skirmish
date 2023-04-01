@@ -46,6 +46,8 @@ def greeting():
 
     player_ready()
 
+    return user_name
+
 def player_turn():
     """
     Allows the player to choose which space to attack.
@@ -67,12 +69,19 @@ def player_turn():
         print("MISS!")
         computer.size[player_choice[0]][player_choice[1]] = "O"
 
+def display_boards():
+    print("-" * 30)
+    print("Player's Board")
+    [print(*row) for row in player.size]
+    print("-" * 30)
+    print("Computer's Board")
+    [print(*row) for row in computer.size]
+
 def run_game():
-    #greeting()
+    player_name = greeting()
     turn = 3
     while turn > 0:
-        print(computer_board)
-        print(player_board)
+        display_boards()
         player_turn()
         turn -= 1
 
