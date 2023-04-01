@@ -22,6 +22,11 @@ class Board:
             
         return self.size
 
+player = Board(5, 4, "player")
+computer = Board(5, 4, "computer")
+player_board = player.assign_ships()
+computer_board = computer.assign_ships()
+
 def greeting():
     """
     Greets player when the game is initially run.
@@ -42,6 +47,10 @@ def greeting():
     player_ready()
 
 def player_turn():
+    """
+    Allows the player to choose which space to attack.
+    If the space has already been attacked, then it will ask for another space.
+    """
     player_row_choice = int(input("Choose a row to attack! "))
     player_col_choice = int(input("Choose a column to attack! "))
     player_choice = (player_row_choice, player_col_choice)
@@ -50,16 +59,21 @@ def player_turn():
         print("Please choose another space.")
         player_turn()
     player.guesses.append(player_choice)
-   
+    if computer.size[player_choice[0]][player_choice[1]] == "@":
+        print("HIT!")
+        computer.size[player_choice[0]][player_choice[1]] = "X"
+        
+    if computer.size[player_choice[0]][player_choice[1]] == "*":
+        print("MISS!")
+        computer.size[player_choice[0]][player_choice[1]] = "O"
 
+def run_game():
+    #greeting()
+    turn = 3
+    while turn > 0:
+        print(computer_board)
+        print(player_board)
+        player_turn()
+        turn -= 1
 
-#greeting()
-player = Board(5, 4, "player")
-computer = Board(5, 4, "computer")
-player_board = player.assign_ships()
-computer_board = computer.assign_ships()
-print(computer_board)
-print(player_board)
-turn = 3
-while turn > 0:
-    player_turn()
+run_game()
