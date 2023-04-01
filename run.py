@@ -68,10 +68,36 @@ def player_turn():
     if computer.size[player_choice[0]][player_choice[1]] == "*":
         print("MISS!")
         computer.size[player_choice[0]][player_choice[1]] = "O"
+    
+def computer_turn():
+    """
+    Gets the computer to select a random row and column
+    """
+    computer_row_choice = random.randint(0, 4)
+    computer_col_choice = random.randint(0, 4)
+    computer_choice = (computer_row_choice, computer_col_choice)
+    if computer_choice in computer.guesses:
+        computer_turn()
+    computer.guesses.append(computer_choice)
+    if player.size[computer_choice[0]][computer_choice[1]] == "@":
+        print("HIT!")
+        player.size[computer_choice[0]][computer_choice[1]] = "X"
+        
+    if player.size[computer_choice[0]][computer_choice[1]] == "*":
+        print("MISS!")
+        player.size[computer_choice[0]][computer_choice[1]] = "O"
 
 def display_boards():
+    """
+    Prints the player board and the computer board
+    to show the player their and the compluter's attacks.
+    """
     print("-" * 30)
     print("Player's Board")
+    """
+    The print statement below is credited to the Stack Overflow
+    page linked in the read me file
+    """
     [print(*row) for row in player.size]
     print("-" * 30)
     print("Computer's Board")
@@ -83,6 +109,7 @@ def run_game():
     while turn > 0:
         display_boards()
         player_turn()
+        computer_turn()
         turn -= 1
 
 run_game()
