@@ -26,6 +26,7 @@ player = Board(5, 4, "player")
 computer = Board(5, 4, "computer")
 player_board = player.assign_ships()
 computer_board = computer.assign_ships()
+player_guess_board = [["*" for x in range(5)] for y in range(5)]
 
 def greeting():
     """
@@ -64,10 +65,12 @@ def player_turn():
     if computer.size[player_choice[0]][player_choice[1]] == "@":
         print("HIT!")
         computer.size[player_choice[0]][player_choice[1]] = "X"
+        player_guess_board[player_choice[0]][player_choice[1]] = "X"
         
     if computer.size[player_choice[0]][player_choice[1]] == "*":
         print("MISS!")
         computer.size[player_choice[0]][player_choice[1]] = "O"
+        player_guess_board[player_choice[0]][player_choice[1]] = "O"
     
 def computer_turn():
     """
@@ -99,17 +102,25 @@ def display_boards():
     [print(*row) for row in player.size]
     print("-" * 30)
     print("Computer's Board")
-    [print(*row) for row in computer.size]
+    [print(*row) for row in player_guess_board]
 
 def run_game():
+    """
+    Run the game until all player or computer ships are destroyed.
+    """
     player_name = greeting()
     print(player.size)
     print(computer.size)
+
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
         display_boards()
         player_turn()
         computer_turn()
-        
 
+    if not any("@" in row for row in player.size):
+        print("GAME OVER! The computer won.")
+    
+    if not any("@" in row for row in computer.size):
+        print("CONGRATULATIONS! You beat the computer.")
 run_game()
