@@ -109,8 +109,6 @@ def run_game():
     Run the game until all player or computer ships are destroyed.
     """
     player_name = greeting()
-    print(player.size)
-    print(computer.size)
 
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
