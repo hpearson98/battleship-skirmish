@@ -28,12 +28,14 @@ player_board = player.assign_ships()
 computer_board = computer.assign_ships()
 player_guess_board = [["*" for x in range(5)] for y in range(5)]
 
+
 def greeting():
     """
     Greets player when the game is initially run.
     Asks the player for their name
     """
-    user_name = input("Welcome to Battleship Skirmish!\nWhat is your Name? ")
+    print("Welcome to Battleship Skirmish!")
+    user_name = input("What is your Name? ")
 
     def player_ready():
         """
@@ -109,9 +111,14 @@ def run_game():
     Run the game until all player or computer ships are destroyed.
     """
     player_name = greeting()
-
+    print("The top left corner is row: 0, column: 0")
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
+        player_ships = sum(x.count("@") for x in player.size)
+        computer_ships = sum(x.count("@") for x in computer.size)
+        print(f"player Ships:" )
+        print(f"Player ships remaining: {player_ships}")
+        print(f"Computer ships remaining: {computer_ships}")
         display_boards()
         player_turn()
         computer_turn()
