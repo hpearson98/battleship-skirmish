@@ -94,10 +94,8 @@ def display_boards():
     """
     print("-" * 30)
     print("Player's Board")
-    """
-    The print statement below is credited to the Stack Overflow
-    page linked in the read me file
-    """
+
+    # The print statement below is credited to the Stack Overflow page linked in the read me file
     [print(*row) for row in player.size]
     print("-" * 30)
     print("Computer's Board")
@@ -105,11 +103,13 @@ def display_boards():
 
 def run_game():
     player_name = greeting()
-    turn = 3
-    while turn > 0:
+    print(player.size)
+    print(computer.size)
+    # The while loop condition below is credited to the Stack Overflow page linked in the read me file
+    while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
         display_boards()
         player_turn()
         computer_turn()
-        turn -= 1
+        
 
 run_game()
