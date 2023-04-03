@@ -110,12 +110,18 @@ def display_boards():
     print("Computer's Board")
     [print(*row) for row in player_guess_board]
 
+def resume_quit():
+    player_resume = input("Press any key to continue or 'n' to quit ")
+    if player_resume.lower() == "n":
+        quit()
+
 def run_game():
     """
     Run the game until all player or computer ships are destroyed.
     """
     player_name = greeting()
     print("The top left corner is row: 0, column: 0")
+    display_boards()
     player_ships = sum(x.count("@") for x in player.size)
     computer_ships = sum(x.count("@") for x in computer.size)
 
@@ -126,9 +132,10 @@ def run_game():
         computer_ships = sum(x.count("@") for x in computer.size)
         print(f"Player ships remaining: {player_ships}")
         print(f"Computer ships remaining: {computer_ships}")
-        display_boards()
         player_turn()
         computer_turn()
+        display_boards()
+        resume_quit()
 
     if not any("@" in row for row in player.size):
         print("GAME OVER! The computer won.")
