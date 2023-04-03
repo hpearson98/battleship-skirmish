@@ -56,23 +56,27 @@ def player_turn():
     Allows the player to choose which space to attack.
     If the space has already been attacked, then it will ask for another space.
     """
-    player_row_choice = int(input("Choose a row to attack! "))
-    player_col_choice = int(input("Choose a column to attack! "))
-    player_choice = (player_row_choice, player_col_choice)
-    if player_choice in player.guesses:
-        print("You have already attacked this space.")
-        print("Please choose another space.")
+    try:
+        player_row_choice = int(input("Choose a row to attack! "))
+        player_col_choice = int(input("Choose a column to attack! "))
+        player_choice = (player_row_choice, player_col_choice)
+        if player_choice in player.guesses:
+            print("You have already attacked this space.")
+            print("Please choose another space.")
+            player_turn()
+        player.guesses.append(player_choice)
+        if computer.size[player_choice[0]][player_choice[1]] == "@":
+            print("HIT!")
+            computer.size[player_choice[0]][player_choice[1]] = "X"
+            player_guess_board[player_choice[0]][player_choice[1]] = "X"
+            
+        if computer.size[player_choice[0]][player_choice[1]] == "*":
+            print("MISS!")
+            computer.size[player_choice[0]][player_choice[1]] = "O"
+            player_guess_board[player_choice[0]][player_choice[1]] = "O"
+    except (ValueError, IndexError):
+        print("Please input a number from 0 to 4")
         player_turn()
-    player.guesses.append(player_choice)
-    if computer.size[player_choice[0]][player_choice[1]] == "@":
-        print("HIT!")
-        computer.size[player_choice[0]][player_choice[1]] = "X"
-        player_guess_board[player_choice[0]][player_choice[1]] = "X"
-        
-    if computer.size[player_choice[0]][player_choice[1]] == "*":
-        print("MISS!")
-        computer.size[player_choice[0]][player_choice[1]] = "O"
-        player_guess_board[player_choice[0]][player_choice[1]] = "O"
     
 def computer_turn():
     """
@@ -112,11 +116,14 @@ def run_game():
     """
     player_name = greeting()
     print("The top left corner is row: 0, column: 0")
+    player_ships = sum(x.count("@") for x in player.size)
+    computer_ships = sum(x.count("@") for x in computer.size)
+
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
+        # The ship counters below are credited to the Stack Overflow page linked in the read me file
         player_ships = sum(x.count("@") for x in player.size)
         computer_ships = sum(x.count("@") for x in computer.size)
-        print(f"player Ships:" )
         print(f"Player ships remaining: {player_ships}")
         print(f"Computer ships remaining: {computer_ships}")
         display_boards()
