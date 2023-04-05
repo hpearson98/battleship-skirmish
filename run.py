@@ -26,6 +26,9 @@ player = Board(5, 4, "player")
 computer = Board(5, 4, "computer")
 player_board = player.assign_ships()
 computer_board = computer.assign_ships()
+# The ship counters below are credited to the Stack Overflow page linked in the read me file
+player_ships = sum(x.count("@") for x in player.size)
+computer_ships = sum(x.count("@") for x in computer.size)
 player_guess_board = [["*" for x in range(5)] for y in range(5)]
 
 
@@ -34,7 +37,7 @@ def greeting():
     Greets player when the game is initially run.
     Asks the player for their name
     """
-    print("Welcome to Battleship Skirmish!")
+    print("WELCOME TO BATTLESHIP SKIRMISH!")
     user_name = input("What is your Name? ")
 
     def player_ready():
@@ -96,19 +99,22 @@ def computer_turn():
         print("MISS!")
         player.size[computer_choice[0]][computer_choice[1]] = "O"
 
-def display_boards():
+def display_boards(name):
     """
     Prints the player board and the computer board
     to show the player their and the compluter's attacks.
     """
-    print("-" * 30)
-    print("Player's Board")
+    print("-" * 40)
+    print(f"{name}'s ships remaining: {player_ships}")
+    print(f"{name}'s Board")
 
     # The print statement below is credited to the Stack Overflow page linked in the read me file
     [print(*row) for row in player.size]
-    print("-" * 30)
+    print("-" * 40)
+    print(f"Computer ships remaining: {computer_ships}")
     print("Computer's Board")
     [print(*row) for row in player_guess_board]
+    print("-" * 40)
 
 def resume_quit():
     """
@@ -123,23 +129,16 @@ def run_game():
     Run the game until all player or computer ships are destroyed.
     """
     player_name = greeting()
+    print("-" * 40)
     print("The top left corner is row: 0, column: 0")
-    display_boards()
-    player_ships = sum(x.count("@") for x in player.size)
-    computer_ships = sum(x.count("@") for x in computer.size)
+    display_boards(player_name)
 
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
-        # The ship counters below are credited to the Stack Overflow page linked in the read me file
-        player_ships = sum(x.count("@") for x in player.size)
-        computer_ships = sum(x.count("@") for x in computer.size)
-        print(f"Player ships remaining: {player_ships}")
-        print(f"Computer ships remaining: {computer_ships}")
         resume_quit()
         player_turn()
         computer_turn()
-        display_boards()
-        
+        display_boards(player_name)
 
     if not any("@" in row for row in player.size):
         print("GAME OVER! The computer won.")
