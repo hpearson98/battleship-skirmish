@@ -44,7 +44,7 @@ def greeting():
         """
         Confirms that the player is ready to play.
         """
-        player_ready_choice = input(f"Hello {user_name}, if you are ready to play press y. ")
+        player_ready_choice = input(f"Hello {user_name}, if you are ready to play, press 'y'. ")
         if player_ready_choice.lower() == "y":
             print("Okay, let's play!")
         else:
@@ -131,6 +131,13 @@ def run_game():
     player_name = greeting()
     print("-" * 40)
     print("The top left corner is row: 0, column: 0")
+    print("""
+    Key:
+    @ - Ship
+    X - Hit
+    O - Miss
+    * - Board Space
+    """)
     display_boards(player_name)
 
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
