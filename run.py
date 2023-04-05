@@ -111,6 +111,9 @@ def display_boards():
     [print(*row) for row in player_guess_board]
 
 def resume_quit():
+    """
+    Gives the player the option to quit.
+    """
     player_resume = input("Press any key to continue or 'n' to quit ")
     if player_resume.lower() == "n":
         quit()
@@ -132,14 +135,16 @@ def run_game():
         computer_ships = sum(x.count("@") for x in computer.size)
         print(f"Player ships remaining: {player_ships}")
         print(f"Computer ships remaining: {computer_ships}")
+        resume_quit()
         player_turn()
         computer_turn()
         display_boards()
-        resume_quit()
+        
 
     if not any("@" in row for row in player.size):
         print("GAME OVER! The computer won.")
     
     if not any("@" in row for row in computer.size):
         print("CONGRATULATIONS! You beat the computer.")
+        
 run_game()
