@@ -27,8 +27,6 @@ computer = Board(5, 4, "computer")
 player_board = player.assign_ships()
 computer_board = computer.assign_ships()
 # The ship counters below are credited to the Stack Overflow page linked in the read me file
-player_ships = sum(x.count("@") for x in player.size)
-computer_ships = sum(x.count("@") for x in computer.size)
 player_guess_board = [["*" for x in range(5)] for y in range(5)]
 
 
@@ -104,6 +102,9 @@ def display_boards(name):
     Prints the player board and the computer board
     to show the player their and the compluter's attacks.
     """
+    player_ships = sum(x.count("@") for x in player.size)
+    computer_ships = sum(x.count("@") for x in computer.size)
+
     print("-" * 40)
     print(f"{name}'s ships remaining: {player_ships}")
     print(f"{name}'s Board")
@@ -138,14 +139,13 @@ def run_game():
     O - Miss
     * - Board Space
     """)
-    display_boards(player_name)
 
     # The while loop condition below is credited to the Stack Overflow page linked in the read me file
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
         resume_quit()
+        display_boards(player_name)
         player_turn()
         computer_turn()
-        display_boards(player_name)
 
     if not any("@" in row for row in player.size):
         print("GAME OVER! The computer won.")
