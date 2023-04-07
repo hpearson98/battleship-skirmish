@@ -42,7 +42,7 @@ def greeting():
         """
         Confirms that the player is ready to play.
         """
-        player_ready_choice = input(f"Hello {user_name}, if you are ready to play, press 'y'. ")
+        player_ready_choice = input(f"Hello {user_name}, if you are ready to play, enter 'y'. ")
         if player_ready_choice.lower() == "y":
             print("Okay, let's play!")
         else:
@@ -52,7 +52,7 @@ def greeting():
 
     return user_name
 
-def player_turn():
+def player_turn(name):
     """
     Allows the player to choose which space to attack.
     If the space has already been attacked, then it will ask for another space.
@@ -64,20 +64,20 @@ def player_turn():
         if player_choice in player.guesses:
             print("You have already attacked this space.")
             print("Please choose another space.")
-            player_turn()
+            player_turn(name)
         player.guesses.append(player_choice)
         if computer.size[player_choice[0]][player_choice[1]] == "@":
-            print("HIT!")
+            print(f"{name}: HIT!")
             computer.size[player_choice[0]][player_choice[1]] = "X"
             player_guess_board[player_choice[0]][player_choice[1]] = "X"
             
         if computer.size[player_choice[0]][player_choice[1]] == "*":
-            print("MISS!")
+            print(f"{name}: MISS!")
             computer.size[player_choice[0]][player_choice[1]] = "O"
             player_guess_board[player_choice[0]][player_choice[1]] = "O"
     except (ValueError, IndexError):
         print("Please input a number from 0 to 4")
-        player_turn()
+        player_turn(name)
     
 def computer_turn():
     """
@@ -90,11 +90,11 @@ def computer_turn():
         computer_turn()
     computer.guesses.append(computer_choice)
     if player.size[computer_choice[0]][computer_choice[1]] == "@":
-        print("HIT!")
+        print("Computer: HIT!")
         player.size[computer_choice[0]][computer_choice[1]] = "X"
         
     if player.size[computer_choice[0]][computer_choice[1]] == "*":
-        print("MISS!")
+        print("Computer: MISS!")
         player.size[computer_choice[0]][computer_choice[1]] = "O"
 
 def display_boards(name):
@@ -121,7 +121,7 @@ def resume_quit():
     """
     Gives the player the option to quit.
     """
-    player_resume = input("Press any key to continue or 'n' to quit ")
+    player_resume = input("Enter any key to continue or 'n' to quit ")
     if player_resume.lower() == "n":
         quit()
 
@@ -144,7 +144,7 @@ def run_game():
     while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
         resume_quit()
         display_boards(player_name)
-        player_turn()
+        player_turn(player_name)
         computer_turn()
 
     if not any("@" in row for row in player.size):
