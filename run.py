@@ -36,15 +36,15 @@ def greeting():
     Asks the player for their name
     """
     print("WELCOME TO BATTLESHIP SKIRMISH!")
-    user_name = input("What is your Name? ")
+    user_name = input(f"What is your Name?\n")
 
     def player_ready():
         """
         Confirms that the player is ready to play.
         """
-        player_ready_choice = input(f"Hello {user_name}, if you are ready to play, enter 'y'. ")
+        player_ready_choice = input(f"Hello {user_name}, if you are ready to play, enter 'y'.\n")
         if player_ready_choice.lower() == "y":
-            print("Okay, let's play!")
+            print(f"Okay, let's play!\n")
         else:
             player_ready()
 
@@ -58,8 +58,8 @@ def player_turn(name):
     If the space has already been attacked, then it will ask for another space.
     """
     try:
-        player_row_choice = int(input("Choose a row to attack! "))
-        player_col_choice = int(input("Choose a column to attack! "))
+        player_row_choice = int(input(f"Choose a row to attack!\n"))
+        player_col_choice = int(input(f"Choose a column to attack!\n"))
         player_choice = (player_row_choice, player_col_choice)
         if player_choice in player.guesses:
             print("You have already attacked this space.")
@@ -121,7 +121,7 @@ def resume_quit():
     """
     Gives the player the option to quit.
     """
-    player_resume = input("Enter any key to continue or 'n' to quit ")
+    player_resume = input(f"Enter any key to continue or 'n' to quit.\n")
     if player_resume.lower() == "n":
         quit()
 
