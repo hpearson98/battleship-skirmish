@@ -148,9 +148,9 @@ def run_game():
         computer_turn()
 
     if not any("@" in row for row in player.size):
-        print("GAME OVER! The computer won.")
+        print(f"GAME OVER! Unlucky {player_name}, the computer won.")
     
     if not any("@" in row for row in computer.size):
-        print("CONGRATULATIONS! You beat the computer.")
+        print(f"CONGRATULATIONS {player_name.upper()}You beat the computer.")
         
 run_game()
