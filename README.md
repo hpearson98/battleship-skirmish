@@ -15,3 +15,6 @@ Battleship Skirmish is a Python terminal game that is based off of the popluar b
 ### Player Name
 When the player enters their name at the start of the game, this transfers throughout and is used to display their boards and remaining ships. This helps to make the experience more personal.
     ![Image of Player Name](readme-images/player-name.png)
+### Key
+A key is displayed at the start of the game to show what each symbol represents on the board. This helps prevent confusion for the player, improving the experience.
+    ![Image of the Key](readme-images/key.png)
