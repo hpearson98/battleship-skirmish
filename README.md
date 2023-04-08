@@ -18,3 +18,7 @@ When the player enters their name at the start of the game, this transfers throu
 ### Key
 A key is displayed at the start of the game to show what each symbol represents on the board. This helps prevent confusion for the player, improving the experience.
     ![Image of the Key](readme-images/key.png)
+### Random Board Generation
+The ships are randomly generated onto both the player's and the computer's board, making each game unique and differnt. The computer's ships remain hidden to the player but the player can still see where their ships are located.
+
+    
