@@ -1,4 +1,5 @@
-import random 
+import random
+
 
 class Board:
     def __init__(self, size, num_ships, type):
@@ -13,20 +14,27 @@ class Board:
         If that space already has a ship then it will choose another space
         """
         for ship in self.num_ships:
-            # The Code Institute Tutor Support team is credited to the code in this for loop
-            rand_index = [random.randint(0, 4),random.randint(0, 4)]
+            """
+            The Code Institute Tutor Support team is credited
+            to the code in this for loop
+            """
+            rand_index = [random.randint(0, 4), random.randint(0, 4)]
             while self.size[rand_index[0]][rand_index[1]] == ship:
                 rand_index = [random.randint(0, 4), random.randint(0, 4)]
-            
+
             self.size[rand_index[0]][rand_index[1]] = ship
-            
+
         return self.size
+
 
 player = Board(5, 4, "player")
 computer = Board(5, 4, "computer")
 player_board = player.assign_ships()
 computer_board = computer.assign_ships()
-# The ship counters below are credited to the Stack Overflow page linked in the read me file
+"""
+The ship counters below are credited to the Stack
+Overflow page linked in the read me file
+"""
 player_guess_board = [["*" for x in range(5)] for y in range(5)]
 
 
@@ -52,6 +60,7 @@ def greeting():
 
     return user_name
 
+
 def player_turn(name):
     """
     Allows the player to choose which space to attack.
@@ -70,7 +79,7 @@ def player_turn(name):
             print(f"{name}: HIT!")
             computer.size[player_choice[0]][player_choice[1]] = "X"
             player_guess_board[player_choice[0]][player_choice[1]] = "X"
-            
+
         if computer.size[player_choice[0]][player_choice[1]] == "*":
             print(f"{name}: MISS!")
             computer.size[player_choice[0]][player_choice[1]] = "O"
@@ -78,7 +87,8 @@ def player_turn(name):
     except (ValueError, IndexError):
         print("Please input a number from 0 to 4")
         player_turn(name)
-    
+
+
 def computer_turn():
     """
     Gets the computer to select a random row and column
@@ -92,10 +102,11 @@ def computer_turn():
     if player.size[computer_choice[0]][computer_choice[1]] == "@":
         print("Computer: HIT!")
         player.size[computer_choice[0]][computer_choice[1]] = "X"
-        
+
     if player.size[computer_choice[0]][computer_choice[1]] == "*":
         print("Computer: MISS!")
         player.size[computer_choice[0]][computer_choice[1]] = "O"
+
 
 def display_boards(name):
     """
@@ -108,14 +119,17 @@ def display_boards(name):
     print("-" * 40)
     print(f"{name}'s ships remaining: {player_ships}")
     print(f"{name}'s Board")
-
-    # The print statement below is credited to the Stack Overflow page linked in the read me file
+    """
+    The print statement below is credited to the Stack
+    Overflow page linked in the read me file
+    """
     [print(*row) for row in player.size]
     print("-" * 40)
     print(f"Computer ships remaining: {computer_ships}")
     print("Computer's Board")
     [print(*row) for row in player_guess_board]
     print("-" * 40)
+
 
 def resume_quit():
     """
@@ -124,6 +138,7 @@ def resume_quit():
     player_resume = input(f"Enter any key to continue or 'n' to quit.\n")
     if player_resume.lower() == "n":
         quit()
+
 
 def run_game():
     """
@@ -140,8 +155,12 @@ def run_game():
     * - Board Space
     """)
 
-    # The while loop condition below is credited to the Stack Overflow page linked in the read me file
-    while any("@" in row for row in player.size) and  any("@" in row for row in computer.size):
+    """
+    The while loop condition below is credited to the Stack
+    Overflow page linked in the read me file
+    """
+
+    while any("@" in row for row in player.size) and any("@" in row for row in computer.size):
         resume_quit()
         display_boards(player_name)
         player_turn(player_name)
@@ -149,8 +168,9 @@ def run_game():
 
     if not any("@" in row for row in player.size):
         print(f"GAME OVER! Unlucky {player_name}, the computer won.")
-    
+
     if not any("@" in row for row in computer.size):
         print(f"CONGRATULATIONS {player_name.upper()}You beat the computer.")
-        
+
+
 run_game()
