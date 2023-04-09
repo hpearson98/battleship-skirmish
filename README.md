@@ -28,3 +28,7 @@ After each turn the player is given the option to quit, allowing them to end the
 The player is made aware if their attack and the computer's attack was a hit or a miss. This helps the player stay updated with the current situation of the game and makes it easier to follow.
 ### Input Validation
 If thwe player tries to select a coordinate that they have already chosen, is out of bounds or enters an input that is not a number, the player is instructed to enter a number from 0 to 4. This allows the player to choose another coordinate with disruoting the flow of the game, improving the user experience. 
+## Future Features
+### Display Computer Coordinate Selection
+I want to display the computer coordinate selection (e.g "The Computer attacked (2, 3)"), as this will give more feedback to the user and make the game clearer, improving their experience.
+### Custom Board Size and Amount of Ships Assigned
