@@ -27,9 +27,15 @@ After each turn the player is given the option to quit, allowing them to end the
 ### Hit / Miss feedback
 The player is made aware if their attack and the computer's attack was a hit or a miss. This helps the player stay updated with the current situation of the game and makes it easier to follow.
 ### Input Validation
-If thwe player tries to select a coordinate that they have already chosen, is out of bounds or enters an input that is not a number, the player is instructed to enter a number from 0 to 4. This allows the player to choose another coordinate with disruoting the flow of the game, improving the user experience. 
+If the player tries to select a coordinate that they have already chosen, is out of bounds or enters an input that is not a number, the player is instructed to enter a number from 0 to 4. This allows the player to choose another coordinate with disruoting the flow of the game, improving the user experience. 
 ## Future Features
 ### Display Computer Coordinate Selection
 I want to display the computer coordinate selection (e.g "The Computer attacked (2, 3)"), as this will give more feedback to the user and make the game clearer, improving their experience.
 ### Custom Board Size and Amount of Ships Assigned
 I want to give the player the ability to customize the size of the board, allowing more replayablity for the user and enhancing their experience.
+# Data Model
+I opted for a Board Class as my data model because it allowed to create two instances to hold the player and the computer boards.
+
+The Board Class stores information such as the board size, the number of ships to assign, the board type (player or computer) and the guesses for each board.
+
+The class also has a method, `assign_ships`, that is used to randomly assign the ships to the board.
