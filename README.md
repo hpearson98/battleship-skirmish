@@ -46,3 +46,7 @@ I have manually tested this project in the following ways:
 * Thoughly tested in my local terminal and the Code Institute Heroku terminal.
 # Bugs
 ## Solved Bugs
+* Received Value Errors if an input was Not a Number and Index Errors if the the number input was out of bounds. To remedy this I used try and except statements to bypass the errors without the game being interupted for the user.
+## Remaing Bugs
+* There are no remainging bugs
+# Deployment
