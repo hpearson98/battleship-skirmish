@@ -50,6 +50,13 @@ I have manually tested this project in the following ways:
 ## Remaing Bugs
 * There are no remainging bugs
 # Deployment
+This project was deployed using Code Institute's mock terminal for Heroku.
+## Steps For Deployment
+1. Fork or clone this [Github](https://github.com/) Repository.
+2. Create a New App on [Heroku](https://www.heroku.com).
+3. Set the buildbacks to `Python` and `NodeJS`, in the order.
+4. Link the Heroku App to the Github Repository.
+5. Click on **Deploy**.
 ## Forking the Github Repository
 By Forking the Github Repository we create a copy of the original Repository that we can use to view and make changes. This can be done using the following steps.
 
