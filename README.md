@@ -39,3 +39,10 @@ I opted for a Board Class as my data model because it allowed to create two inst
 The Board Class stores information such as the board size, the number of ships to assign, the board type (player or computer) and the guesses for each board.
 
 The class also has a method, `assign_ships`, that is used to randomly assign the ships to the board.
+# Testing
+I have manually tested this project in the following ways:
+* I passed the code through a PEP8 linter in order to ensure there were not any issues.
+* Purposely tested for invalid inputs, for example, inputing letters when numbers are expected and inputing numbers that are out of bounds.
+* Thoughly tested in my local terminal and the Code Institute Heroku terminal.
+# Bugs
+## Solved Bugs
