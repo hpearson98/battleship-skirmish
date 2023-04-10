@@ -32,3 +32,4 @@ If thwe player tries to select a coordinate that they have already chosen, is ou
 ### Display Computer Coordinate Selection
 I want to display the computer coordinate selection (e.g "The Computer attacked (2, 3)"), as this will give more feedback to the user and make the game clearer, improving their experience.
 ### Custom Board Size and Amount of Ships Assigned
+I want to give the player the ability to customize the size of the board, allowing more replayablity for the user and enhancing their experience.
