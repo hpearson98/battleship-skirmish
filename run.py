@@ -67,8 +67,8 @@ def player_turn(name):
     If the space has already been attacked, then it will ask for another space.
     """
     try:
-        player_row_choice = int(input(f"Choose a row to attack!\n"))
-        player_col_choice = int(input(f"Choose a column to attack!\n"))
+        player_row_choice = int(input("Choose a row to attack!\n"))
+        player_col_choice = int(input("Choose a column to attack!\n"))
         player_choice = (player_row_choice, player_col_choice)
         if player_choice in player.guesses:
             print("You have already attacked this space.")
@@ -99,6 +99,8 @@ def computer_turn():
     if computer_choice in computer.guesses:
         computer_turn()
     computer.guesses.append(computer_choice)
+
+    print(f"The Computer attacked: row {computer_row_choice}, column {computer_col_choice}")
     if player.size[computer_choice[0]][computer_choice[1]] == "@":
         print("Computer: HIT!")
         player.size[computer_choice[0]][computer_choice[1]] = "X"
@@ -135,7 +137,7 @@ def resume_quit():
     """
     Gives the player the option to quit.
     """
-    player_resume = input(f"Enter any key to continue or 'n' to quit.\n")
+    player_resume = input("Enter any key to continue or 'n' to quit.\n")
     if player_resume.lower() == "n":
         quit()
 
