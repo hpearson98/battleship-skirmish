@@ -173,7 +173,7 @@ def run_game():
         print(f"GAME OVER! Unlucky {player_name}, the computer won.")
 
     if not any("@" in row for row in computer.size):
-        print(f"CONGRATULATIONS {player_name.upper()}You beat the computer.")
+        print(f"CONGRATULATIONS {player_name.upper()}! You beat the computer.")
 
 
 run_game()
