@@ -87,3 +87,30 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 # Credits
+## Code
+* The following code is derived from [this](https://stackoverflow.com/questions/30521975/print-a-nested-list-line-by-line-python) Stack Overflow thread:
+```
+[print(*row) for row in player.size]
+```
+The purpose of this code is to print the boards in a grid format.
+* The following code is credited to the Code Institute Tutor Support Team:
+```
+rand_index = [random.randint(0, 4), random.randint(0, 4)]
+while self.size[rand_index[0]][rand_index[1]] == ship:
+    rand_index = [random.randint(0, 4), random.randint(0, 4)]
+
+self.size[rand_index[0]][rand_index[1]] = ship
+```
+The purpose of this code is to chose a random column and row for the computer to choose to attack. If the random coordinate has already been chosen then it will choose another random row and column.
+* The following code in derived from [this](https://stackoverflow.com/questions/40514139/check-if-an-item-is-in-a-nested-list) Stack Overflow thread:
+```
+ while (any("@" in row for row in player.size) and
+        any("@" in row for row in computer.size)):
+```
+The purpose of this code is to search for any ships on the player and the computer boards.
+* The following code derived from [this](https://stackoverflow.com/questions/5828123/nested-list-and-count ) Stack Overflow thread:
+```
+player_ships = sum(x.count("@") for x in player.size)
+computer_ships = sum(x.count("@") for x in computer.size)
+```
+The purpose of this code is to keep track of the remaining player and computer ships.
