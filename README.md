@@ -114,3 +114,6 @@ player_ships = sum(x.count("@") for x in player.size)
 computer_ships = sum(x.count("@") for x in computer.size)
 ```
 The purpose of this code is to keep track of the remaining player and computer ships.
+# Acknowledgements
+* I would like to thank my Mentor, Jack Wachira for their quality and continuous feedback.
+* I would like to thank the Code Institute Tutor Support for their assistance, patience and desire to help others.
