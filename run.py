@@ -2,10 +2,10 @@ import random
 
 
 class Board:
-    def __init__(self, size, num_ships, type):
+    def __init__(self, size, num_ships, board_type):
         self.size = [["*" for x in range(size)] for y in range(size)]
         self.num_ships = ["@" for x in range(num_ships)]
-        self.type = type
+        self.board_type = board_type
         self.guesses = []
 
     def assign_ships(self):
@@ -14,10 +14,8 @@ class Board:
         If that space already has a ship then it will choose another space
         """
         for ship in self.num_ships:
-            """
-            The Code Institute Tutor Support team is credited
-            to the code in this for loop
-            """
+            # The Code Institute Tutor Support team is 
+            # credited to the code in this for loop
             rand_index = [random.randint(0, 4), random.randint(0, 4)]
             while self.size[rand_index[0]][rand_index[1]] == ship:
                 rand_index = [random.randint(0, 4), random.randint(0, 4)]
@@ -44,15 +42,17 @@ def greeting():
     Asks the player for their name
     """
     print("WELCOME TO BATTLESHIP SKIRMISH!")
-    user_name = input(f"What is your Name?\n")
+    user_name = input("What is your Name?\n")
 
     def player_ready():
         """
         Confirms that the player is ready to play.
         """
-        player_ready_choice = input(f"Hello {user_name}, if you are ready to play, enter 'y'.\n")
+        player_ready_choice = input(
+            f"Hello {user_name}, if you are ready to play, enter 'y'.\n"
+        )
         if player_ready_choice.lower() == "y":
-            print(f"Okay, let's play!\n")
+            print("Okay, let's play!\n")
         else:
             player_ready()
 
@@ -160,7 +160,8 @@ def run_game():
     Overflow page linked in the read me file
     """
 
-    while any("@" in row for row in player.size) and any("@" in row for row in computer.size):
+    while (any("@" in row for row in player.size) and
+           any("@" in row for row in computer.size)):
         resume_quit()
         display_boards(player_name)
         player_turn(player_name)
