@@ -7,7 +7,7 @@ class Board:
         self.num_ships = ["@" for x in range(num_ships)]
         self.board_type = board_type
         self.guesses = []
-
+    
     def assign_ships(self):
         """
         Gets a random space on the board and place a ship in that space.
@@ -51,6 +51,7 @@ def greeting():
         player_ready_choice = input(
             f"Hello {user_name}, if you are ready to play, enter 'y'.\n"
         )
+        
         if player_ready_choice.lower() == "y":
             print("Okay, let's play!\n")
         else:
@@ -91,7 +92,9 @@ def player_turn(name):
 
 def computer_turn():
     """
-    Gets the computer to select a random row and column
+    Gets the computer to select a random row and column.
+    If the computer has already chosen that space, it will choose another.
+    Displays a symbol on the board for a hit or miss accordingly.
     """
     computer_row_choice = random.randint(0, 4)
     computer_col_choice = random.randint(0, 4)
@@ -101,6 +104,7 @@ def computer_turn():
     computer.guesses.append(computer_choice)
 
     print(f"The Computer attacked: row {computer_row_choice}, column {computer_col_choice}")
+    
     if player.size[computer_choice[0]][computer_choice[1]] == "@":
         print("Computer: HIT!")
         player.size[computer_choice[0]][computer_choice[1]] = "X"
@@ -112,8 +116,9 @@ def computer_turn():
 
 def display_boards(name):
     """
-    Prints the player board and the computer board
-    to show the player their and the compluter's attacks.
+    Keeps count of the remaing ships for the player and computer.
+    Prints the player board and the computer board to show the player
+    their and the compluter's attacks.
     """
     player_ships = sum(x.count("@") for x in player.size)
     computer_ships = sum(x.count("@") for x in computer.size)
@@ -121,10 +126,10 @@ def display_boards(name):
     print("-" * 40)
     print(f"{name}'s ships remaining: {player_ships}")
     print(f"{name}'s Board")
-    """
-    The print statement below is credited to the Stack
-    Overflow page linked in the read me file
-    """
+
+    # The print statement below is credited to the Stack
+    # Overflow page linked in the read me file
+
     [print(*row) for row in player.size]
     print("-" * 40)
     print(f"Computer ships remaining: {computer_ships}")
@@ -157,10 +162,8 @@ def run_game():
     * - Board Space
     """)
 
-    """
-    The while loop condition below is credited to the Stack
-    Overflow page linked in the read me file
-    """
+    # The while loop condition below is credited to the Stack
+    # Overflow page linked in the read me file
 
     while (any("@" in row for row in player.size) and
            any("@" in row for row in computer.size)):
@@ -170,9 +173,11 @@ def run_game():
         computer_turn()
 
     if not any("@" in row for row in player.size):
+        display_boards(player_name)
         print(f"GAME OVER! Unlucky {player_name}, the computer won.")
 
     if not any("@" in row for row in computer.size):
+        display_boards(player_name)
         print(f"CONGRATULATIONS {player_name.upper()}! You beat the computer.")
 
 
