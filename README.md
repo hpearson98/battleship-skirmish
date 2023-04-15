@@ -50,7 +50,8 @@ I have manually tested this project in the following ways:
 ## Solved Bugs
 * Received Value Errors if an input was Not a Number and Index Errors if the the number input was out of bounds. To remedy this I used try and except statements to bypass the errors without the game being interupted for the user.
 ## Remaing Bugs
-* There are no remainging bugs
+* Occassionally, when the game displays which coordinate the computer has chosen, it also displays previous coordinates that the computer has chosen as well. This does not directly affect the game progression but can be confusing for the player. Because this happens inconsistently it is hard to understand what triggers this.
+ 
 # Deployment
 This project was deployed using Code Institute's mock terminal for Heroku.
 ## Steps For Deployment
