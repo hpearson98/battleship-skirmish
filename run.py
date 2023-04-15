@@ -7,14 +7,14 @@ class Board:
         self.num_ships = ["@" for x in range(num_ships)]
         self.board_type = board_type
         self.guesses = []
-    
+
     def assign_ships(self):
         """
         Gets a random space on the board and place a ship in that space.
         If that space already has a ship then it will choose another space
         """
         for ship in self.num_ships:
-            # The Code Institute Tutor Support team is 
+            # The Code Institute Tutor Support team is
             # credited to the code in this for loop
             rand_index = [random.randint(0, 4), random.randint(0, 4)]
             while self.size[rand_index[0]][rand_index[1]] == ship:
@@ -51,7 +51,7 @@ def greeting():
         player_ready_choice = input(
             f"Hello {user_name}, if you are ready to play, enter 'y'.\n"
         )
-        
+
         if player_ready_choice.lower() == "y":
             print("Okay, let's play!\n")
         else:
@@ -104,7 +104,7 @@ def computer_turn():
     computer.guesses.append(computer_choice)
 
     print(f"The Computer attacked: row {computer_row_choice}, column {computer_col_choice}")
-    
+
     if player.size[computer_choice[0]][computer_choice[1]] == "@":
         print("Computer: HIT!")
         player.size[computer_choice[0]][computer_choice[1]] = "X"
