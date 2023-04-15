@@ -119,3 +119,5 @@ The purpose of this code is to keep track of the remaining player and computer s
 # Acknowledgements
 * I would like to thank my Mentor, Jack Wachira for their quality and continuous feedback.
 * I would like to thank the Code Institute Tutor Support for their assistance, patience and desire to help others.
+# Supporting Documentation
+[Click here](https://lucid.app/lucidchart/93403f93-4924-406d-85e7-c573f73c4f7c/edit?viewport_loc=-103%2C112%2C1779%2C749%2C0_0&invitationId=inv_7d56f041-ab8a-4ce2-a01c-13d1052d05a3) to view the flowchart that I constructed, using Lucid Chart, while planning the logic for the game.
